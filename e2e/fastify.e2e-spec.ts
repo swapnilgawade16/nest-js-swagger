@@ -78,45 +78,6 @@ describe('Fastify Swagger', () => {
     ).resolves.toBeDefined();
   });
 
-  describe('served swagger ui', () => {
-    const SWAGGER_RELATIVE_URL = '/apidoc';
-
-    beforeEach(async () => {
-      const swaggerDocument = SwaggerModule.createDocument(
-        app,
-        builder.build(),
-      );
-      SwaggerModule.setup(SWAGGER_RELATIVE_URL, app, swaggerDocument, {
-        // to showcase that in new implementation u can use custom swagger-ui path. Useful when using e.g. webpack
-        customSwaggerUiPath: path.resolve(`./node_modules/swagger-ui-dist`),
-      });
-
-      await app.init();
-      await app.getHttpAdapter().getInstance().ready();
-    });
-
-    afterEach(async () => {
-      await app.close();
-    });
-
-    it('content type of served json document should be valid', async () => {
-      const response = await request(app.getHttpServer()).get(
-        `${SWAGGER_RELATIVE_URL}-json`
-      );
-
-      expect(response.status).toEqual(200);
-      expect(Object.keys(response.body).length).toBeGreaterThan(0);
-    });
-
-    it('content type of served static should be available', async () => {
-      const response = await request(app.getHttpServer()).get(
-        `${SWAGGER_RELATIVE_URL}/swagger-ui-bundle.js`
-      );
-
-      expect(response.status).toEqual(200);
-    });
-  });
-
   describe('custom documents endpoints', () => {
     const JSON_CUSTOM_URL = '/apidoc-json';
     const YAML_CUSTOM_URL = '/apidoc-yaml';

@@ -1,5 +1,5 @@
 {
-  "name": "@nestjs/swagger",
+  "name": "nestjs-swagger",
   "version": "7.1.16",
   "description": "Nest - modern, fast, powerful node.js web framework (@swagger)",
   "author": "Kamil Mysliwiec",
@@ -27,8 +27,7 @@
     "@nestjs/mapped-types": "2.0.3",
     "js-yaml": "4.1.0",
     "lodash": "4.17.21",
-    "path-to-regexp": "3.2.0",
-    "swagger-ui-dist": "5.9.1"
+    "path-to-regexp": "3.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "18.4.3",
